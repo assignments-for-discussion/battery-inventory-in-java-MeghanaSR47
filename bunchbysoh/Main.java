@@ -48,9 +48,9 @@ public class Main {
     //Testing boundary conditions
     int[] testCase2 = {99, 63, 62};
     counts = countBatteriesByHealth(testCase4);
-    assert (counts.healthy == 0); 
-    assert (counts.exchange == 1); // 99 is exchange
-    assert (counts.failed == 2);  // 63 and 62 is failed
+    assert(counts.healthy == 0); 
+    assert(counts.exchange == 1); // 99 is exchange
+    assert(counts.failed == 2);  // 63 and 62 is failed
     System.out.println("Test Case 2 passed!");
     
     System.out.println("Done counting :)\n");
