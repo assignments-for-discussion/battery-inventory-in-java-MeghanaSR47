@@ -39,10 +39,11 @@ public class Main {
 
     //Test case - 2
     int[] capacities = {100, 120, 78, 63, 62};
+    counts = new CountsBySoH();
     counts = countBatteriesByHealth(capacities);
     assert(counts.healthy == 2);
     assert(counts.exchange == 1);
-    assert(counts.failed == 2);
+    assert(counts.failed == 2)
     
     System.out.println("Done counting :)\n");
   }
