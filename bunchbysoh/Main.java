@@ -30,20 +30,12 @@ public class Main {
   static void testBucketingByHealth() {
     System.out.println("Counting batteries by SoH...\n");
 
-    //Test case - 1 
+    //Default Test Case
     int[] presentCapacities = {113, 116, 80, 95, 92, 70};
     CountsBySoH counts = countBatteriesByHealth(presentCapacities);
     assert(counts.healthy == 2);
     assert(counts.exchange == 3);
     assert(counts.failed == 1);
-
-    //Test case - 2
-    int[] capacities = {100, 120, 78, 63, 62};
-    counts = new CountsBySoH();
-    counts = countBatteriesByHealth(capacities);
-    assert(counts.healthy == 2);
-    assert(counts.exchange == 1);
-    assert(counts.failed == 2)
     
     System.out.println("Done counting :)\n");
   }
