@@ -8,23 +8,26 @@ public class Main {
     public int failed = 0;
   };
 
+  private static final double HEALTHY_THRESHOLD = 83.0;
+  private static final double EXCHANGE_THRESHOLD = 63.0;
+  private static final int RATED_CAPACITY = 120;
+
   static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
     CountsBySoH counts = new CountsBySoH();
 
     if(presentCapacities.length == 0)
     {
-      return counts;
+      return counts; //Return empty counts if there are no batteries provided
     }
     
-    int ratedCapacity = 120;
     for(int presentCapacity : presentCapacities)
     {
         //Calculate the state-of-health(SoH) of each battery  
-        double sohPercentage = (100 * presentCapacity)/ratedCapacity;
+        double sohPercentage = (100 * presentCapacity)/RATED_CAPACITY;
 
-        if(sohPercentage>83) //SoH more than 83%, up to 100%: classified as healthy
+        if(sohPercentage>HEALTHY_THRESHOLD) //SoH more than 83%, up to 100%: classified as healthy
           counts.healthy++;
-        else if(sohPercentage>=63) //SoH between 83% and 63%: classified as exchange
+        else if(sohPercentage>=EXCHANGE_THRESHOLD) //SoH between 83% and 63%: classified as exchange
           counts.exchange++;
         else //SoH below 63%: classified as failed
           counts.failed++;
@@ -63,8 +66,8 @@ public class Main {
     int[] testCase3 = {};
     counts = countBatteriesByHealth(testCase3);
     assert(counts.healthy == 0); 
-    assert(counts.exchange == 0); // 99 is exchange
-    assert(counts.failed == 0);  // 63 and 62 is failed
+    assert(counts.exchange == 0);
+    assert(counts.failed == 0);
     System.out.println("Test Case 3 passed!");
     
     System.out.println("Done counting :)\n");
