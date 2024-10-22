@@ -40,10 +40,18 @@ public class Main {
     //Test Case - 1
     int[] testCase1 = {120,90,50};
     counts = countBatteriesByHealth(testCase1);
-    assert(counts.healthy == 1);
-    assert(counts.exchange == 1);
-    assert(counts.failed == 1);
+    assert(counts.healthy == 1); //120 is healthy
+    assert(counts.exchange == 1); //90 is exchange
+    assert(counts.failed == 1); //50 is failed
     System.out.println("Test Case 1 passed!");
+
+    //Testing boundary conditions
+    int[] testCase2 = {99, 63, 62};
+    counts = countBatteriesByHealth(testCase4);
+    assert (counts.healthy == 0); 
+    assert (counts.exchange == 1); // 99 is exchange
+    assert (counts.failed == 2);  // 63 and 62 is failed
+    System.out.println("Test Case 2 passed!");
     
     System.out.println("Done counting :)\n");
   }
