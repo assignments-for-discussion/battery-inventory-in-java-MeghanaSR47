@@ -10,6 +10,12 @@ public class Main {
 
   static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
     CountsBySoH counts = new CountsBySoH();
+
+    if(presentCapacities.length == 0)
+    {
+      return counts;
+    }
+    
     int ratedCapacity = 120;
     for(int presentCapacity : presentCapacities)
     {
@@ -52,6 +58,14 @@ public class Main {
     assert(counts.exchange == 1); // 99 is exchange
     assert(counts.failed == 2);  // 63 and 62 is failed
     System.out.println("Test Case 2 passed!");
+
+    //Empty test case
+    int[] testCase3 = {};
+    counts = countBatteriesByHealth(testCase3);
+    assert(counts.healthy == 0); 
+    assert(counts.exchange == 0); // 99 is exchange
+    assert(counts.failed == 0);  // 63 and 62 is failed
+    System.out.println("Test Case 3 passed!");
     
     System.out.println("Done counting :)\n");
   }
