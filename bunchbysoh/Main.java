@@ -1,7 +1,8 @@
 package bunchbysoh;
 
 public class Main {
-  static class CountsBySoH {
+  static class CountsBySoH 
+  {
     public int healthy = 0;
     public int exchange = 0;
     public int failed = 0;
@@ -9,6 +10,20 @@ public class Main {
 
   static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
     CountsBySoH counts = new CountsBySoH();
+    int ratedCapacity = 120;
+    for(int presentCapacity : presentCapacities)
+    {
+        //Calculate the state-of-health(SoH) of each battery  
+        double sohPercentage = (100 * presentCapacity)/ratedCapacity;
+
+        if(sohPercentage>83) //SoH more than 83%, up to 100%: classified as healthy
+          counts.healthy++;
+        else if(sohPercentage>=63) //SoH between 83% and 63%: classified as exchange
+          counts.exchange++;
+        else //SoH below 63%: classified as failed
+          counts.failed++;
+      
+    }
     return counts;
   }
 
