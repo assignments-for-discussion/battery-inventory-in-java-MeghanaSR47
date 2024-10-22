@@ -36,6 +36,14 @@ public class Main {
     assert(counts.healthy == 2);
     assert(counts.exchange == 3);
     assert(counts.failed == 1);
+
+    //Test Case - 1
+    int[] testCase1 = {120,90,50};
+    counts = countBatteriesByHealth(testCase1);
+    assert(counts.healthy == 1);
+    assert(counts.exchange == 1);
+    assert(counts.failed == 1);
+    System.out.println("Test Case 1 passed!");
     
     System.out.println("Done counting :)\n");
   }
